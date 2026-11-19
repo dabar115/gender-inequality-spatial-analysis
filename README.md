@@ -4,6 +4,8 @@
 This repository reproduces the empirical part of my master's thesis at **Bursa Uludağ University (M.Sc. Economics, 2021)**:
 *"Cinsiyet Eşitsizliği ve Ekonomik Kalkınma: Türkiye'de İller Düzeyinde Mekânsal Veri Analizi"*.
 
+📄 **Published thesis:** [ProQuest Dissertations & Theses](https://www.proquest.com/openview/fcc8907c51e90d992a96ea3fc87c7e4d/1?pq-origsite=gscholar&cbl=2026366&diss=y)
+
 > **Note on provenance.** The original analysis in 2021 was carried out in **GeoDa**. In 2026 I rebuilt the full
 > workflow in **Python (PySAL / esda)** so that it is scripted, version-controlled and reproducible.
 > The script `03_global_moran.py` compares the reproduced Moran's I values with the values reported in the thesis
@@ -25,7 +27,13 @@ and did these spatial patterns change between 2009 and 2018?
 | `KBGDO` | GDP per capita (USD) | TÜİK |
 
 The indicator selection follows the UNDP Gender Inequality Index (health, education, labour market) as far as data
-is available at province level. Raw data is not stored in the repo – see `data/raw/README.md`.
+is available at province level.
+
+### Data availability
+This repository publishes the **methodology and code only**. The province-level dataset used in the thesis is kept
+private and is **not** part of the repository (`data/` is excluded via `.gitignore`). The expected input format is
+documented in `data/raw/README.md`, so the workflow can be run with the same variables from the original sources
+(TÜİK, SGK). Aggregate results are reported in the published thesis.
 
 ## Methods
 1. **Spatial weights** – queen contiguity, row-standardised (Turkish provinces are all contiguous; see Gezici & Hewings 2007).
@@ -64,11 +72,14 @@ make            # or run scripts/00 … 05 in order
 ## Kurzfassung (Deutsch)
 Das Repository reproduziert den empirischen Teil meiner Masterarbeit (Uludağ-Universität, 2021) zu
 **Geschlechterungleichheit und wirtschaftlicher Entwicklung in den 81 Provinzen der Türkei (2009–2018)**.
-Die ursprüngliche Analyse wurde in GeoDa durchgeführt; 2026 habe ich sie in Python (PySAL/esda) vollständig
+Veröffentlicht wird nur die Methodik (Code); der Datensatz bleibt privat. Die ursprüngliche Analyse wurde in GeoDa durchgeführt; 2026 habe ich sie in Python (PySAL/esda) vollständig
 skriptbasiert und reproduzierbar nachgebaut und die Ergebnisse mit den Werten der Arbeit abgeglichen.
 Methoden: räumliche Gewichtungsmatrix (Queen), globales Moran's I mit Permutationstest, LISA-Cluster (p < 0,05),
 dazu als Erweiterung Robustheitstests verschiedener Gewichtungen und bivariates Moran's I.
 Zentrales Ergebnis: deutliche, über die Zeit zunehmende räumliche Abhängigkeit und ein stabiles West-Ost-Gefälle.
+
+## Thesis
+[Full text on ProQuest](https://www.proquest.com/openview/fcc8907c51e90d992a96ea3fc87c7e4d/1?pq-origsite=gscholar&cbl=2026366&diss=y)
 
 ## Author
 **Danis Baran** – M.Sc. Economics (Uludağ University), M.Sc. Economics student at Heinrich Heine University Düsseldorf

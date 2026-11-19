@@ -7,3 +7,5 @@ data/raw/*.xlsx
 data/geo/*.geojson
 data/processed/
 .DS_Store
+outputs/tables/*.csv
+figures/*.png
