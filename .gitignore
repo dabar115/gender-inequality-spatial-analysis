@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+data/raw/*.csv
+data/raw/*.xlsx
+data/geo/*.geojson
+data/processed/
+.DS_Store
