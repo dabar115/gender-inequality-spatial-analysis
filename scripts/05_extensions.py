@@ -12,6 +12,7 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 from src.config import PROCESSED, TABLES, VARIABLES, MAP_YEARS
 from src.spatial import build_weights, global_moran, bivariate_moran
 
+TABLES.mkdir(parents=True, exist_ok=True)
 geo = gpd.read_file(PROCESSED / "provinces.gpkg")
 panel = pd.read_csv(PROCESSED / "panel.csv")
 weights = {"queen": build_weights(geo, "queen"),

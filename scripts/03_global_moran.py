@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 import pandas as pd, geopandas as gpd
 sys.path.append(str(Path(__file__).resolve().parents[1]))
-from src.config import PROCESSED, TABLES, DOCS, VARIABLES, YEARS
+from src.config import DEMO, PROCESSED, TABLES, DOCS, VARIABLES, YEARS
 from src.spatial import build_weights, global_moran
 
 TABLES.mkdir(parents=True, exist_ok=True)
@@ -27,6 +27,8 @@ wide.to_csv(TABLES / "global_moran_queen.csv")
 print(wide)
 
 # --- validation against the thesis -----------------------------------------
+if DEMO:
+    raise SystemExit("demo mode: validation against thesis values skipped")
 ref = pd.read_csv(DOCS / "thesis_reference_moran.csv", index_col="year")
 diff = (wide - ref[wide.columns]).abs()
 diff.round(3).to_csv(TABLES / "validation_vs_thesis.csv")

@@ -49,6 +49,20 @@ documented in `data/raw/README.md`, so the workflow can be run with the same var
 - LISA maps show a persistent **west–east divide**: High-High clusters of income and female education in the west,
   Low-Low clusters in the east and south-east; the education gender gap forms a High-High cluster in the south-east.
 
+## Demo with simulated data
+Because the thesis data stays private, the repository includes a **demo mode**: it generates an artificial
+province panel (west–east gradient + noise) and runs the complete pipeline on it. All demo figures are marked
+*"SIMULATED DATA – NOT THESIS RESULTS"*.
+
+```bash
+DEMO=1 make demo
+```
+
+![LISA demo](figures/demo/lisa_KBGDO.png)
+
+Unit tests for the spatial statistics (weights, Moran's I, LISA) run on a synthetic grid: `pytest tests/`.
+A detailed description of the methods is in [`docs/methodology.md`](docs/methodology.md).
+
 ## How to run
 ```bash
 python -m venv .venv && source .venv/bin/activate
@@ -60,10 +74,11 @@ make            # or run scripts/00 … 05 in order
 ## Repository structure
 ```
 ├── data/            raw/ (not committed) · geo/ (downloaded boundaries) · processed/
-├── docs/            thesis_reference_moran.csv – values reported in the thesis (Table 3.2)
-├── figures/         distribution maps and LISA cluster maps
+├── docs/            methodology.md · thesis_reference_moran.csv (thesis Table 3.2)
+├── figures/demo/    maps produced in demo mode (simulated data)
 ├── outputs/tables/  Moran's I tables, LISA cluster lists, validation, extensions
-├── scripts/         00_download … 05_extensions (run in order)
+├── scripts/         00_download … 05_extensions · demo_generate_synthetic_data.py
+├── tests/           unit tests (pytest)
 └── src/             config.py · spatial.py (weights, Moran's I, LISA)
 ```
 

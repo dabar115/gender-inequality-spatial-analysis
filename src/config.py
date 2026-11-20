@@ -1,12 +1,20 @@
 """Central configuration for the analysis (paths, variables, years, settings)."""
 from pathlib import Path
 
+import os
+
 ROOT = Path(__file__).resolve().parents[1]
-RAW = ROOT / "data" / "raw"
-PROCESSED = ROOT / "data" / "processed"
+
+# DEMO=1 runs the whole pipeline on simulated data (data/demo) and writes to figures/demo, outputs/demo.
+# Without it, the pipeline expects the (private) thesis data in data/raw.
+DEMO = os.environ.get("DEMO") == "1"
+
+RAW = ROOT / "data" / ("demo" if DEMO else "raw")
+PROCESSED = ROOT / "data" / ("processed_demo" if DEMO else "processed")
 GEO = ROOT / "data" / "geo"
-TABLES = ROOT / "outputs" / "tables"
-FIGURES = ROOT / "figures"
+TABLES = ROOT / "outputs" / ("demo" if DEMO else "tables")
+FIGURES = ROOT / "figures" / ("demo" if DEMO else "")
+WATERMARK = "SIMULATED DATA – NOT THESIS RESULTS" if DEMO else None
 DOCS = ROOT / "docs"
 
 YEARS = list(range(2009, 2019))          # analysis period of the thesis

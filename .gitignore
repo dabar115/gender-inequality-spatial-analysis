@@ -9,3 +9,6 @@ data/processed/
 .DS_Store
 outputs/tables/*.csv
 figures/*.png
+!figures/demo/*.png
+data/demo/
+data/processed_demo/

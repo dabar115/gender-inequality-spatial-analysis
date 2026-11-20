@@ -5,3 +5,4 @@ libpysal>=4.9
 esda>=2.5
 mapclassify>=2.6
 matplotlib>=3.7
+pytest>=7.0
